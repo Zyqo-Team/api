@@ -12,13 +12,15 @@ function checkIP(ip) {
     }
 }
 
+// Hole die IP-Adresse aus der URL-Abfrage
 const urlParams = new URLSearchParams(window.location.search);
 const ip = urlParams.get('ip');
 
 if (ip) {
     const result = checkIP(ip);
-    document.write(JSON.stringify(result)); // Gibt die JSON-Antwort zurück
+    // Gibt die JSON-Antwort zurück
+    console.log(JSON.stringify(result));
 } else {
-    document.write(JSON.stringify({ error: "No IP provided" }));
+    console.log(JSON.stringify({ error: "No IP provided" }));
 }
 </script>
