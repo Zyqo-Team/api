@@ -10,29 +10,29 @@
     <p>Dieser Service überprüft, ob eine IP-Adresse berechtigt ist.</p>
 
     <script>
-        // Eine einfache Liste von erlaubten IPs
-        const allowedIPs = [
-            "51.195.61.62:30110",
-        ];
+const allowedIPs = [
+    "51.195.61.62",
+];
 
-        // Funktion zum Überprüfen der IP
-        function checkIP(ip) {
-            if (allowedIPs.includes(ip)) {
-                document.write('{"allowed": true}');
-            } else {
-                document.write('{"allowed": false}');
-            }
-        }
+// Funktion zum Überprüfen der IP
+function checkIP(ip) {
+    if (allowedIPs.includes(ip)) {
+        return { allowed: true };
+    } else {
+        return { allowed: false };
+    }
+}
 
-        // Beispiel: Hole die IP-Adresse aus der URL-Abfrage
-        const urlParams = new URLSearchParams(window.location.search);
-        const ip = urlParams.get('ip');
+const urlParams = new URLSearchParams(window.location.search);
+const ip = urlParams.get('ip');
 
-        if (ip) {
-            checkIP(ip);
-        } else {
-            document.write('{"error": "No IP provided"}');
-        }
+if (ip) {
+    const result = checkIP(ip);
+    document.write(JSON.stringify(result)); // Gibt die JSON-Antwort zurück
+} else {
+    document.write(JSON.stringify({ error: "No IP provided" }));
+}
+
     </script>
 </body>
 </html>
