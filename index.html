@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IP Checker</title>
-</head>
-<body>
-    <h1>IP Checker</h1>
-    <p>Dieser Service überprüft, ob eine IP-Adresse berechtigt ist.</p>
-
-    <script>
+<script>
 const allowedIPs = [
     "51.195.61.62",
 ];
@@ -32,7 +21,4 @@ if (ip) {
 } else {
     document.write(JSON.stringify({ error: "No IP provided" }));
 }
-
-    </script>
-</body>
-</html>
+</script>
