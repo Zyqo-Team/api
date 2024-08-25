@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP Check</title>
+</head>
+<body>
+    <script>
+        // Function to parse query parameters
+        function getQueryParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                ip: params.get('ip')
+            };
+        }
+
+        // Simulated IP check logic
+        function checkIP(ip) {
+            // Replace this logic with your actual IP check
+            // For example purposes, we assume IP "51.195.61.62" is allowed.
+            const allowedIps = ["51.195.61.62", "127.0.0.1"];
+            return allowedIps.includes(ip);
+        }
+
+        // Main logic to handle the request
+        (function() {
+            const params = getQueryParams();
+
+            if (!params.ip) {
+                document.body.innerHTML = "<pre>{\"error\": \"IP address not provided.\"}</pre>";
+                return;
+            }
+
+            const isAllowed = checkIP(params.ip);
+
+            // Construct the JSON response
+            const jsonResponse = JSON.stringify({
+                Allowed: isAllowed
+            });
+
+            // Output the JSON response
+            document.body.innerHTML = `<pre>${jsonResponse}</pre>`;
+        })();
+    </script>
+</body>
+</html>
