@@ -1,39 +1,13 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IP Checker</title>
+    <title>Server Whitelist</title>
 </head>
 <body>
-    <h1>IP Checker</h1>
-    <p>Dieser Service überprüft, ob eine IP-Adresse berechtigt ist.</p>
-
-    <script>
-        // Eine einfache Liste von erlaubten IPs
-        const allowedIPs = [
-            "51.195.61.62" // Füge hier die erlaubten IPs hinzu
-        ];
-
-        // Funktion zum Überprüfen der IP
-        function checkIP(ip) {
-            if (allowedIPs.includes(ip)) {
-                return { allowed: true };
-            } else {
-                return { allowed: false };
-            }
-        }
-
-        // Beispiel: Hole die IP-Adresse aus der URL-Abfrage
-        const urlParams = new URLSearchParams(window.location.search);
-        const ip = urlParams.get('ip');
-
-        if (ip) {
-            const result = checkIP(ip);
-            document.write(JSON.stringify(result)); // Gibt die JSON-Antwort zurück
-        } else {
-            document.write(JSON.stringify({ error: "No IP provided" }));
-        }
-    </script>
+    <pre>
+        51.195.61.62
+    </pre>
 </body>
 </html>
