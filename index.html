@@ -17,7 +17,6 @@
 
         // Simulated IP check logic
         function checkIP(ip) {
-            // Replace this logic with your actual IP check
             const allowedIps = ["51.195.61.62", "127.0.0.1"];
             return allowedIps.includes(ip);
         }
@@ -28,19 +27,17 @@
 
             if (!params.ip) {
                 // Respond with a JSON error
-                document.body.innerHTML = "<pre>{\"error\": \"IP address not provided.\"}</pre>";
+                document.body.innerHTML = JSON.stringify({ error: "IP address not provided." });
                 return;
             }
 
             const isAllowed = checkIP(params.ip);
 
             // Construct the JSON response
-            const jsonResponse = JSON.stringify({
-                Allowed: isAllowed
-            });
+            const jsonResponse = JSON.stringify({ Allowed: isAllowed });
 
             // Set the response MIME type to JSON
-            document.body.innerHTML = `<pre>${jsonResponse}</pre>`;
+            document.body.innerHTML = jsonResponse;
             document.body.style.display = "none";
         })();
     </script>
