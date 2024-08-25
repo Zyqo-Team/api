@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,15 +12,15 @@
     <script>
         // Eine einfache Liste von erlaubten IPs
         const allowedIPs = [
-            "51.195.61.62"
+            "51.195.61.62" // Füge hier die erlaubten IPs hinzu
         ];
 
         // Funktion zum Überprüfen der IP
         function checkIP(ip) {
             if (allowedIPs.includes(ip)) {
-                document.write('{"allowed": true}');
+                return { allowed: true };
             } else {
-                document.write('{"allowed": false}');
+                return { allowed: false };
             }
         }
 
@@ -29,9 +29,10 @@
         const ip = urlParams.get('ip');
 
         if (ip) {
-            checkIP(ip);
+            const result = checkIP(ip);
+            document.write(JSON.stringify(result)); // Gibt die JSON-Antwort zurück
         } else {
-            document.write('{"error": "No IP provided"}');
+            document.write(JSON.stringify({ error: "No IP provided" }));
         }
     </script>
 </body>
