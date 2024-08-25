@@ -1,26 +1,38 @@
-<script>
-const allowedIPs = [
-    "51.195.61.62",
-];
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP Checker</title>
+</head>
+<body>
+    <h1>IP Checker</h1>
+    <p>Dieser Service überprüft, ob eine IP-Adresse berechtigt ist.</p>
 
-// Funktion zum Überprüfen der IP
-function checkIP(ip) {
-    if (allowedIPs.includes(ip)) {
-        return { allowed: true };
-    } else {
-        return { allowed: false };
-    }
-}
+    <script>
+        // Eine einfache Liste von erlaubten IPs
+        const allowedIPs = [
+            "51.195.61.62"
+        ];
 
-// Hole die IP-Adresse aus der URL-Abfrage
-const urlParams = new URLSearchParams(window.location.search);
-const ip = urlParams.get('ip');
+        // Funktion zum Überprüfen der IP
+        function checkIP(ip) {
+            if (allowedIPs.includes(ip)) {
+                document.write('{"allowed": true}');
+            } else {
+                document.write('{"allowed": false}');
+            }
+        }
 
-if (ip) {
-    const result = checkIP(ip);
-    // Gibt die JSON-Antwort zurück
-    console.log(JSON.stringify(result));
-} else {
-    console.log(JSON.stringify({ error: "No IP provided" }));
-}
-</script>
+        // Beispiel: Hole die IP-Adresse aus der URL-Abfrage
+        const urlParams = new URLSearchParams(window.location.search);
+        const ip = urlParams.get('ip');
+
+        if (ip) {
+            checkIP(ip);
+        } else {
+            document.write('{"error": "No IP provided"}');
+        }
+    </script>
+</body>
+</html>
