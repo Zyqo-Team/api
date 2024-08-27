@@ -1,45 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IP Check</title>
+    <title>Allowed Servers</title>
 </head>
 <body>
-    <script>
-        // Function to parse query parameters
-        function getQueryParams() {
-            const params = new URLSearchParams(window.location.search);
-            return {
-                ip: params.get('ip')
-            };
-        }
-
-        // Simulated IP check logic
-        function checkIP(ip) {
-            const allowedIps = ["51.195.61.62", "127.0.0.1"];
-            return allowedIps.includes(ip);
-        }
-
-        // Main logic to handle the request
-        (function() {
-            const params = getQueryParams();
-
-            if (!params.ip) {
-                // Respond with a JSON error
-                document.body.innerHTML = JSON.stringify({ error: "IP address not provided." });
-                return;
-            }
-
-            const isAllowed = checkIP(params.ip);
-
-            // Construct the JSON response
-            const jsonResponse = JSON.stringify({ Allowed: isAllowed });
-
-            // Set the response MIME type to JSON
-            document.body.innerHTML = jsonResponse;
-            document.body.style.display = "none";
-        })();
-    </script>
+<pre id="data">
+{
+    "allowed_ips": [
+        "123.123.123.123",
+        "234.234.234.234",
+        "345.345.345.345"
+    ]
+}
+</pre>
 </body>
 </html>
